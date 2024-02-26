@@ -7,11 +7,13 @@ import Post from '../pages/blogs/_id';
 import About from '../pages/About';
 
 import { postById, posts } from '../apis/loaders';
+import ErrorPage from '../components/ErrorPage';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
