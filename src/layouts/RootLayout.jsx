@@ -1,37 +1,32 @@
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import '../styles/index.css';
 
-function RootLayout() {
+const navLinkStyle = {
+  marginRight: '5px',
+  marginLeft: '5px',
+};
+
+const RootLayout = () => {
+  const getNavLinkClass = ({ isActive }) => (isActive ? 'active' : '');
+
   return (
     <>
-      <NavLink
-        className={({ isActive }) => (isActive ? 'active' : '')}
-        style={{ marginRight: '5px' }}
-        to={'/'}
-      >
+      <NavLink className={getNavLinkClass} style={navLinkStyle} to={'/'}>
         Home
       </NavLink>
       |
-      <NavLink
-        className={({ isActive }) => (isActive ? 'active' : '')}
-        style={{ marginRight: '5px', marginLeft: '5px' }}
-        to={'/blog'}
-      >
+      <NavLink className={getNavLinkClass} style={navLinkStyle} to={'/blog'}>
         Blog
       </NavLink>
-      |{' '}
-      <NavLink
-        className={({ isActive }) => (isActive ? 'active' : '')}
-        style={{ marginLeft: '5px' }}
-        to={'/about'}
-      >
+      |
+      <NavLink className={getNavLinkClass} style={navLinkStyle} to={'/about'}>
         About
       </NavLink>
       <p />
       <Outlet />
     </>
   );
-}
+};
 
 export default RootLayout;
-// outlet untuk menampung semua halaman yg menjadi children
